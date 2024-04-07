@@ -1,0 +1,75 @@
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .ListContainer {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    .TodoList {
+      .title {
+        color: white;
+        padding-top: 5px;
+        padding-bottom: 20px;
+        text-align: center;
+        background-color: rgb(187, 138, 219);
+        border-radius: 10px;
+        input {
+          height: 30px;
+          width: 250px;
+          padding: 3px 10px;
+          margin-right: 20px;
+          border-radius: 10px;
+          border: none;
+        }
+        button {
+          padding: 8px;
+          border-radius: 10px;
+          border: none;
+          background-color: rgb(128, 26, 196);
+          color: white;
+        }
+      }
+      ul {
+        display: flex;
+        flex-direction: column;
+        background-color: rgb(238, 213, 255);
+        height: 100%;
+        border-radius: 10px;
+        li {
+          list-style: none;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+          align-items: center;
+          margin: 5px;
+          button {
+            padding: 5px 8px;
+            border-radius: 10px;
+            border: none;
+            background-color: rgb(128, 26, 196);
+            color: white;
+          }
+        }
+      }
+    }
+    .DoneList {
+      border-radius: 10px;
+      h2 {
+        text-align: center;
+        color: rgb(128, 26, 196);
+      }
+      ul {
+        list-style: none;
+        span {
+          margin-right: 10px;
+        }
+        .done {
+          text-decoration: line-through;
+        }
+      }
+      border: 2px dashed rgb(128, 26, 196);
+    }
+  }
+}
