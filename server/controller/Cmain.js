@@ -1,4 +1,3 @@
-const { where } = require("sequelize");
 const { Todo } = require("../models");
 
 exports.getIndex = (req, res) => {
@@ -13,6 +12,7 @@ exports.getUser = (req, res) => {
 exports.getTodos = async (req, res) => {
   try {
     const todoAll = await Todo.findAll(); //[{id, text, done}]
+    console.log("sever todoAll ::", todoAll);
     res.json(todoAll);
   } catch (err) {
     console.log("server err!", err);
@@ -48,7 +48,7 @@ exports.patchTodo = async (req, res) => {
 
     if (!todo) return res.status(400).json({ msg: "Todo not found" });
 
-    await Todo.update({ done: !todo.done }, { where: { id: todoId } });
+    await todo.update({ done: !todo.done });
 
     res.json({ msg: "todo updated", todo });
   } catch (error) {

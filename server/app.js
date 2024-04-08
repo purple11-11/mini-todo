@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const PORT = 8080; // react 3000이랑 겹치지 않게만 설정
+const PORT = 4000; // react 3000이랑 겹치지 않게만 설정
 const app = express();
 const { sequelize } = require("./models");
 const idxRouter = require("./routes");

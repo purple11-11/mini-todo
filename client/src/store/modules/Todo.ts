@@ -15,6 +15,7 @@ const initialState: TodoState = {
 const INIT = "todo/INIT" as const;
 const CREATE = "todo/CREATE" as const;
 const DONE = "todo/DONE" as const;
+const REMOVE = "todo/REMOVE" as const;
 
 let count = initialState.list.length;
 initialState["nextID"] = count; // 할 일 추가 시 다음 id 부여하기 위해 미리 계산
@@ -32,6 +33,10 @@ export const done = (id: number) => ({
   type: DONE,
   id, // number
 });
+export const remove = (id: number) => ({
+  type: REMOVE,
+  id,
+});
 
 interface Init {
   type: typeof INIT;
@@ -48,7 +53,12 @@ interface Done {
   id: number;
 }
 
-type Action = Init | Create | Done;
+interface Remove {
+  type: typeof REMOVE;
+  id: number;
+}
+
+type Action = Init | Create | Done | Remove;
 
 // export function TodoReducer(state = initialValue, action) {
 export function TodoReducer(state = initialState, action: Action) {
@@ -79,12 +89,17 @@ export function TodoReducer(state = initialState, action: Action) {
           if (li.id === action.id) {
             return {
               ...li, // id와 text는 그대로 유지
-              done: true,
+              done: !li.done,
             };
           } else {
             return li;
           }
         }),
+      };
+    case REMOVE:
+      return {
+        ...state,
+        list: state.list.filter((li) => li.id !== action.id),
       };
     default:
       return state;
