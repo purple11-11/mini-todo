@@ -40,6 +40,7 @@ export default function TodoList() {
     const res = await axios.patch(`${process.env.REACT_APP_API_SERVER}/todo/${id}`);
     if (res.data) dispatch(done(id));
   };
+
   return (
     <section className="TodoList">
       <div className="title">

@@ -56,10 +56,12 @@ main {
     }
     .DoneList {
       border-radius: 10px;
+      border: 2px dashed rgb(128, 26, 196);
       h2 {
         text-align: center;
         color: rgb(128, 26, 196);
       }
+
       ul {
         list-style: none;
         span {
@@ -69,7 +71,6 @@ main {
           text-decoration: line-through;
         }
       }
-      border: 2px dashed rgb(128, 26, 196);
     }
   }
 }
