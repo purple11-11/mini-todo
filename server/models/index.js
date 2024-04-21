@@ -1,6 +1,11 @@
 const Sequelize = require("sequelize");
 
-const config = require(__dirname + "/../config/config.json")["development"];
+let config;
+if (process.env.NODE_MODE) {
+  config = require(__dirname + "/../config/config.js")[process.env.NODE_MODE];
+} else {
+  config = require(__dirname + "/../config/config.js")["development"];
+}
 const db = {};
 
 const sequelize = new Sequelize(config.database, config.username, config.password, config);
